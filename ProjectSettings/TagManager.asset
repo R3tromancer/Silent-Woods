@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Endline
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ground
+  - Player
+  - bounce
+  - Enemy
+  - Hazard
+  - Background
+  - interactables
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: background image
+    uniqueID: 4210318611
+    locked: 0
+  - name: background
+    uniqueID: 3697812047
+    locked: 0
+  - name: Enemy
+    uniqueID: 4213745299
+    locked: 0
+  - name: OnBack
+    uniqueID: 934627331
+    locked: 0
+  - name: BackPlat
+    uniqueID: 3857057117
+    locked: 0
+  - name: Particle
+    uniqueID: 1629130145
+    locked: 0
+  - name: Player
+    uniqueID: 4181872345
+    locked: 0
+  - name: PBP
+    uniqueID: 1602361389
+    locked: 0
+  - name: bounce
+    uniqueID: 2450618143
+    locked: 0
+  - name: platforms
+    uniqueID: 3912636029
+    locked: 0
+  - name: float
+    uniqueID: 110172533
+    locked: 0
+  - name: interactables
+    uniqueID: 1094559061
+    locked: 0
+  - name: UInC
+    uniqueID: 370750861
+    locked: 0
