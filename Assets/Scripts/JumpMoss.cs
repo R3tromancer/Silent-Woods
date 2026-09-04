@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class JumpMoss : MonoBehaviour
@@ -19,7 +16,7 @@ public class JumpMoss : MonoBehaviour
     {
        if(other.otherCollider == polygonCollider2D)
        {
-        FindObjectOfType<PlayerMovement>().mossBounce(bouncePower);
+        FindAnyObjectByType<PlayerMovement>().mossBounce(bouncePower);
         animator.SetTrigger("isSteppedOn");
        }
     }

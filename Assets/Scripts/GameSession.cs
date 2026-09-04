@@ -1,11 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class GameSession : MonoBehaviour
 {
@@ -17,7 +12,7 @@ public class GameSession : MonoBehaviour
 
     void Awake()
     {
-        if(FindObjectsOfType<GameSession>().Length > 1)
+        if(FindObjectsByType<GameSession>().Length > 1)
         {
             Destroy(gameObject);
         }
@@ -41,7 +36,7 @@ public class GameSession : MonoBehaviour
         {
             scoreText = 0;
             scoreTMP.text = scoreText.ToString();
-            FindObjectOfType<GamePersist>().SelfDestruct();
+            FindAnyObjectByType<GamePersist>().SelfDestruct();
             SceneManager.LoadScene(0);
             Destroy(gameObject);
         }

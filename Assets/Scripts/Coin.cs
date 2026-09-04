@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -17,7 +14,7 @@ public class Coin : MonoBehaviour
         if(other.tag == "Player" && !wasCollected)
         {
             wasCollected = true;
-            FindObjectOfType<GameSession>().ProcessCoin(coinScore);
+            FindAnyObjectByType<GameSession>().ProcessCoin(coinScore);
             AudioSource.PlayClipAtPoint(coinSound,Camera.main.transform.position, soundVolume);
             Destroy(gameObject);
         }

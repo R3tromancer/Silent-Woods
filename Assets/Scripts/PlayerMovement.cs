@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -85,21 +83,21 @@ public class PlayerMovement : MonoBehaviour
         rigidbody2D.AddTorque(deathThrowAngle);
         rigidbody2D.AddForce(throwValue , ForceMode2D.Impulse);
         yield return new WaitForSeconds(deathStopTime);
-        FindObjectOfType<GameSession>().ProcessPlayerDeath();
+        FindAnyObjectByType<GameSession>().ProcessPlayerDeath();
     }
     void Run()
     {
-        Vector2 velocity = new Vector2 (moveInput.x * moveSpeed, rigidbody2D.velocity.y);
-        rigidbody2D.velocity = velocity;
+        Vector2 velocity = new Vector2 (moveInput.x * moveSpeed, rigidbody2D.linearVelocity.y);
+        rigidbody2D.linearVelocity = velocity;
 
-        bool isMoving = Mathf.Abs(rigidbody2D.velocity.x) > Mathf.Epsilon;       
+        bool isMoving = Mathf.Abs(rigidbody2D.linearVelocity.x) > Mathf.Epsilon;       
         animator.SetBool("isWalking", isMoving);
     }
     private void FLipSprite()
     {
-        bool isMoving = Mathf.Abs(rigidbody2D.velocity.x) > Mathf.Epsilon;
+        bool isMoving = Mathf.Abs(rigidbody2D.linearVelocity.x) > Mathf.Epsilon;
         if(isMoving)
-        transform.localScale = new Vector2(Mathf.Sign(rigidbody2D.velocity.x), 1f);
+        transform.localScale = new Vector2(Mathf.Sign(rigidbody2D.linearVelocity.x), 1f);
     }
     void OnJump(InputValue value)
     {
@@ -133,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         isDashing = true;
         animator.SetBool("hasDashed", isDashing);
         rigidbody2D.gravityScale = 0f;
-        rigidbody2D.velocity = new Vector2(transform.localScale.x * dashSpeed, 0f);
+        rigidbody2D.linearVelocity = new Vector2(transform.localScale.x * dashSpeed, 0f);
         yield return new WaitForSeconds(dashTime);
         if(isDownfall)
         rigidbody2D.gravityScale = gravityDown;
@@ -144,13 +142,13 @@ public class PlayerMovement : MonoBehaviour
     }
     void FallGravityChange()
     {
-        if(rigidbody2D.velocity.y <= 0 && !isDownfall && !boxCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if(rigidbody2D.linearVelocity.y <= 0 && !isDownfall && !boxCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             isDownfall = true;
             rigidbody2D.gravityScale = gravityDown;
             Debug.Log("DNNNN");
         }
-        else if(rigidbody2D.velocity.y > 0 && isDownfall && boxCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        else if(rigidbody2D.linearVelocity.y > 0 && isDownfall && boxCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             isDownfall = false;
             rigidbody2D.gravityScale = gravity;

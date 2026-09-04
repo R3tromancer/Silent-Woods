@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -18,7 +17,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rigidbody2D.velocity = new Vector2 (transform.localScale.x * enemySpeed, rigidbody2D.velocity.y);
+        rigidbody2D.linearVelocity = new Vector2 (transform.localScale.x * enemySpeed, rigidbody2D.linearVelocity.y);
     }
 
     void OnTriggerExit2D(Collider2D other)
